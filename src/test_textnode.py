@@ -1,0 +1,32 @@
+import unittest
+from textnode import TextNode, TextType
+
+class TestTextNode(unittest.TestCase):
+    def test_eq(self):
+        node = TextNode("This is a text node", TextType.BOLD)
+        node2 = TextNode("This is a text node", TextType.BOLD)
+        self.assertEqual(node, node2)
+
+    def test_not_eq(self):
+        node = TextNode("Another node", TextType.BOLD)
+        node2 = TextNode("Another node", TextType.ITALIC)
+        self.assertNotEqual(node, node2)
+
+    def test_not_eq2(self):
+        node = TextNode("node", TextType.TEXT, "www.boot.dev")
+        node2 = TextNode("node", TextType.TEXT)
+        self.assertNotEqual(node, node2)
+
+    def test_not_eq3(self):
+        node = TextNode("node", TextType.TEXT)
+        node2 = TextNode("node2", TextType.TEXT)
+        self.assertNotEqual(node, node2)
+
+    def test_repr(self):
+        node = TextNode("Node", TextType.TEXT, "https://www.boot.dev")
+        self.assertEqual(
+            "TextNode(Node, text, https://www.boot.dev)", repr(node)
+        )
+
+if __name__ == "__main__":
+    unitttest.main()
