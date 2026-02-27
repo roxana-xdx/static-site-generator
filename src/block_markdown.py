@@ -23,7 +23,7 @@ def block_to_block_type(markdown):
     if len(lines) != 0:
         return BlockType.HEADING
     
-    lines = re.findall(r"^```\n.+\n```", markdown)
+    lines = re.findall(r"^```\n(.|\n)+\n```", markdown)
     if len(lines) != 0:
         return BlockType.CODE
     
