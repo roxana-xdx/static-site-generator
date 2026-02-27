@@ -1,9 +1,12 @@
-from textnode import TextType, TextNode
+from copy_static import copy_files
+
+dir_path_static = "./static"
+dir_path_public = "./public"
 
 def main():
-    print("Hello world!")
-    node = TextNode("Hello", TextType.BOLD, "https://www.boot.dev")
-    print(node)
+    
+    copy_files(dir_path_static, dir_path_public)
+    print("Successfully copied static files to public directory.")
 
 if __name__ == "__main__":
     main()
