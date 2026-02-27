@@ -10,7 +10,8 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
         
         parts = node.text.split(delimiter)
         if len(parts) % 2 == 0:
-            raise Exception("matching delimiter not found")
+            e = f"matching delimiter {delimiter} not found"
+            raise Exception(e)
         
         for i in range(len(parts)):
             if parts[i] == "":
