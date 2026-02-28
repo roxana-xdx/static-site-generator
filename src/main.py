@@ -17,7 +17,7 @@ def main():
         template_path,
         dir_path_public,
     )
-    print("Page generated successfully.")
+    print("Pages generated successfully.")
 
 if __name__ == "__main__":
     main()
