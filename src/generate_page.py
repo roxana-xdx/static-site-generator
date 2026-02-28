@@ -1,5 +1,19 @@
-import os
+import os, re
 from markdown_to_html import markdown_to_html_node
+
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+    files = os.listdir(dir_path_content)
+
+    for file in files:
+        file_path = os.path.join(dir_path_content, file)
+        if os.path.isfile(file_path):
+            dest_file = re.sub(r"\.md$", ".html", file)
+            dest_file_path = os.path.join(dest_dir_path, dest_file)
+            generate_page(file_path, template_path, dest_file_path)
+        elif os.path.isdir(file_path):
+            nested_dest_dir_path = os.path.join(dest_dir_path, file)
+            generate_pages_recursive(file_path, template_path, nested_dest_dir_path)
+
 
 def generate_page(from_path, template_path, dest_path):
     print(f"Generating page from {from_path} to {dest_path} using {template_path}.")
